@@ -9,7 +9,7 @@
 		</encoder>
 	</appender>
 
-	<logger name="com.hice.demo.springboot.jta" level="WARN" />
+	<logger name="com.atomikos.jta" level="WARN" />
 
 	<springProfile name="dev">
 		<root level="INFO">
