@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atomikos.jta.dao.databases2.PushMessageMapper">
+	<resultMap id="BaseResultMap" type="com.atomikos.jta.model.Message">
+		<result column="ID" property="id" jdbcType="VARCHAR" />
+		<result column="PORTNUM" property="portNum" jdbcType="DECIMAL" />
+		<result column="SMSNUMBER" property="smsNumber" jdbcType="VARCHAR" />
+		<result column="SMSSUBJECT" property="smsSubject" jdbcType="VARCHAR" />
+		<result column="SMSCONTENT" property="smsContent" jdbcType="VARCHAR" />
+		<result column="SMSTYPE" property="smsType" jdbcType="DECIMAL" />
+		<result column="PHONUM" property="phoNum" jdbcType="VARCHAR" />
+		<result column="SMSSTATE" property="smsState" jdbcType="DECIMAL" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		ID, PORTNUM, SMSNUMBER, SMSSUBJECT, SMSCONTENT, SMSTYPE, PHONUM, SMSSTATE
+	</sql>
+
+	<insert id="add" parameterType="com.atomikos.jta.model.Infomation"
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO t_message (name,content) VALUES (#{name},#{content})
+	</insert>
+
+	<delete id="del" parameterType="java.lang.Long">
+		delete from t_message WHERE id=#{id}
+	</delete>
+
+	
+	<select id="selectSuggestList" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from messageinfo t where t.smsstate in (1,2)
+	</select>
+
+	<insert id="insertSuggest" parameterType="com.atomikos.jta.model.Message">
+		insert into sms_send
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="msgId != null">
+				MSGID,
+			</if>
+			<if test="portNum != null">
+				PORTNUM,
+			</if>
+			<if test="smsNumber != null">
+				SMSNUMBER,
+			</if>
+			<if test="smsSubject != null">
+				SMSSUBJECT,
+			</if>
+			<if test="smsContent != null">
+				SMSCONTENT,
+			</if>
+			<if test="smsType != null">
+				SMSTYPE,
+			</if>
+			<if test="phoNum != null">
+				PHONUM,
+			</if>
+			<if test="smsState != null">
+				SMSSTATE,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="msgId != null">
+				#{msgId,jdbcType=VARCHAR},
+			</if>
+			<if test="portNum != null">
+				#{portNum,jdbcType=DECIMAL},
+			</if>
+			<if test="smsNumber != null">
+				#{smsNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="smsSubject != null">
+				#{smsSubject,jdbcType=VARCHAR},
+			</if>
+			<if test="smsContent != null">
+				#{smsContent,jdbcType=VARCHAR},
+			</if>
+			<if test="smsType != null">
+				#{smsType,jdbcType=DECIMAL},
+			</if>
+			<if test="phoNum != null">
+				#{phoNum,jdbcType=VARCHAR},
+			</if>
+			<if test="smsState != null">
+				#{smsState,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+</mapper>
