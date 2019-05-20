@@ -1,4 +1,4 @@
-package com.atomikos.jta.dao;
+package com.atomikos.jta.dao.databases2;
 
 import org.springframework.stereotype.Repository;
 

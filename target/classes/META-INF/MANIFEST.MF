@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Implementation-Title: springboot-jta
 Implementation-Version: 1.0.0
 Built-By: kefaming
-Implementation-Vendor-Id: com.hice.demo.springboot.jta
+Implementation-Vendor-Id: com.atomikos.jta
 Build-Jdk: 1.8.0_121
 Implementation-URL: http://projects.spring.io/spring-boot/springboot-j
  ta/
