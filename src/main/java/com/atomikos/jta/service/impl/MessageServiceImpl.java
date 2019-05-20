@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.atomikos.jta.dao.databases1.MessageMapper;
-import com.atomikos.jta.dao.databases2.PushMessageMapper;
+import com.atomikos.jta.dao.MessageMapper;
+import com.atomikos.jta.dao.PushMessageMapper;
 import com.atomikos.jta.model.Message;
 import com.atomikos.jta.service.MessageService;
 import com.atomikos.jta.util.DateUtil;
