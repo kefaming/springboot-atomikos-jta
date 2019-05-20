@@ -12,11 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.atomikos.jta.dao.databases1.MessageMapper;
 import com.atomikos.jta.dao.databases2.PushMessageMapper;
-import com.atomikos.jta.model.Infomation;
 import com.atomikos.jta.model.Message;
-import com.atomikos.jta.model.PushMessage;
-import com.atomikos.jta.model.User;
-import com.atomikos.jta.service.UserService;
+import com.atomikos.jta.service.MessageService;
 import com.atomikos.jta.util.DateUtil;
 
 /**
@@ -24,10 +21,10 @@ import com.atomikos.jta.util.DateUtil;
  */
 @Service
 @Transactional
-public class UserServiceImpl implements UserService {
-    private static Logger logger = Logger.getLogger(UserServiceImpl.class);
+public class MessageServiceImpl implements MessageService {
+    private static Logger logger = Logger.getLogger(MessageServiceImpl.class);
     @Autowired
-    MessageMapper originalMessageMapper;
+    MessageMapper messageMapper;
     @Autowired
     PushMessageMapper pushMessageMapper;
 
@@ -62,12 +59,12 @@ public class UserServiceImpl implements UserService {
 //    }
 
 	@Override
-	public void sendSuggestData() throws Exception {
+	public void sendMessageData() throws Exception {
 		long beginTime = System.currentTimeMillis();
 		
 		//1、从数据库获取要推送的数据
 		Map<String,Object> map=new HashMap<String,Object>();
-		List<Message> list = originalMessageMapper.selectSuggestList(map);
+		List<Message> list = messageMapper.selectSuggestList(map);
 		if(list == null || list.size() <=0){
 			logger.info("============= 推送失败[失败原因：当前无新数据]， 当前时间："+DateUtil.format(new Date(System.currentTimeMillis()))+"... ==============");
 			return;
@@ -89,7 +86,7 @@ public class UserServiceImpl implements UserService {
 	        if(success) {
 		        	if(list != null  && list.size() > 0){        	
 		        		//7、统一更新状态码
-		        		int count = originalMessageMapper.updateSuggestByGroup(ids);
+		        		int count = messageMapper.updateSuggestByGroup(ids);
 		        		long endTime = System.currentTimeMillis();
 		        		logger.info("============= 推送成功[共写入"+count+"条记录，耗时"+(endTime-beginTime)/1000+"秒]， 当前时间："+DateUtil.format(new Date(System.currentTimeMillis()))+"... ==============");
 		        		return;
@@ -98,6 +95,12 @@ public class UserServiceImpl implements UserService {
 	        String end = DateUtil.format(new Date(System.currentTimeMillis()));
 	        logger.info("============= 写入成功。当前系统时间："+end+" ==============");
 		}
+		
+	}
+
+	@Override
+	public void updateMessageLog() throws Exception {
+		// TODO Auto-generated method stub
 		
 	}
 

@@ -2,15 +2,12 @@ package com.atomikos.jta.controller;
 
 import java.time.LocalDateTime;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import com.atomikos.jta.model.User;
-import com.atomikos.jta.service.UserService;
 
 //@Component注解用于对那些比较中立的类进行注释；
 //相对与在持久层、业务层和控制层分别采用 @Repository、@Service 和 @Controller 对分层中的类进行注释
@@ -18,14 +15,14 @@ import com.atomikos.jta.service.UserService;
 @EnableScheduling // 1.开启定时任务
 @EnableAsync // 2.开启多线程
 public class DataPushController {
-	@Autowired
-	UserService userService;
+//	@Autowired
+//	UserService userService;
 
 	@Async
 //	@Scheduled(fixedDelay = 1500) // 间隔1秒
 	public void sendSuggestData(User user) {
 		try {
-			userService.sendSuggestData();
+//			userService.sendSuggestData();
 			Thread.sleep(1500 * 1);
 		} catch (Exception e) {
 			e.printStackTrace();

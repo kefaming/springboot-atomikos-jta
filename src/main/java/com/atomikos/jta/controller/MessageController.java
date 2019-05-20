@@ -4,8 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.atomikos.jta.model.User;
-import com.atomikos.jta.service.UserService;
+import com.atomikos.jta.service.MessageService;
 
 /**
  * Created by hyson on 2017/3/10.
@@ -13,7 +12,7 @@ import com.atomikos.jta.service.UserService;
 @RestController
 public class MessageController {
     @Autowired
-    UserService userService;
+    MessageService messageService;
 
 //    @GetMapping("/add")
 //    public String add(User user){
@@ -37,10 +36,10 @@ public class MessageController {
     
     
     
-    @GetMapping("/sendSuggestData")
-    public String sendSuggestData(){
+    @GetMapping("/sendMessageData")
+    public String sendMessageData(){
         try {
-            userService.sendSuggestData();
+        		messageService.sendMessageData();
         } catch (Exception e) {
             e.printStackTrace();
             return "error";
@@ -48,10 +47,10 @@ public class MessageController {
         return "success";
     }
     
-    @GetMapping("/log")
-    public String log(){
+    @GetMapping("/updateMessageLog")
+    public String updateMessageLog(){
         try {
-            userService.sendSuggestData();
+        		messageService.updateMessageLog();
         } catch (Exception e) {
             e.printStackTrace();
             return "error";
