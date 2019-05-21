@@ -1,0 +1,49 @@
+spring.application.name=springboot-atomikos-jta
+
+# Profiles
+spring.profiles.active = dev
+
+# Server
+server.port = 8088
+#server.context-path =
+
+# Mysql 1
+#mysql.datasource.databases1.url = jdbc:sqlserver://192.168.229.133:1433;databaseName=message&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+#mysql.datasource.databases1.username = root
+#mysql.datasource.databases1.password = 123456
+
+#mysql.datasource.databases1.url = jdbc:mysql://127.0.0.1:3306/message?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+#mysql.datasource.databases1.username = root
+#mysql.datasource.databases1.password = root
+
+# SqlServer 1
+sqlserver.datasource.databases1.url = 192.168.1.88
+sqlserver.datasource.databases1.port = 1433
+sqlserver.datasource.databases1.username = sa
+sqlserver.datasource.databases1.password = 123
+sqlserver.datasource.databases1.database = fzgwd
+
+
+sqlserver.datasource.databases1.minPoolSize = 3
+sqlserver.datasource.databases1.maxPoolSize = 10
+sqlserver.datasource.databases1.maxLifetime = 20000
+sqlserver.datasource.databases1.borrowConnectionTimeout = 30
+sqlserver.datasource.databases1.loginTimeout = 30
+sqlserver.datasource.databases1.maintenanceInterval = 60
+sqlserver.datasource.databases1.maxIdleTime = 60
+sqlserver.datasource.databases1.testQuery = select 1
+
+
+# Mysql 2
+mysql.datasource.databases2.url = jdbc:mysql://192.168.1.8:3306/fzgwd?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+mysql.datasource.databases2.username = root
+mysql.datasource.databases2.password = 123
+
+mysql.datasource.databases2.minPoolSize = 3
+mysql.datasource.databases2.maxPoolSize = 10
+mysql.datasource.databases2.maxLifetime = 20000
+mysql.datasource.databases2.borrowConnectionTimeout = 30
+mysql.datasource.databases2.loginTimeout = 30
+mysql.datasource.databases2.maintenanceInterval = 60
+mysql.datasource.databases2.maxIdleTime = 60
+mysql.datasource.databases2.testQuery = select 1
