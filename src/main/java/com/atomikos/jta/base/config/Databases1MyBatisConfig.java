@@ -43,11 +43,11 @@ public class Databases1MyBatisConfig {
 		// ds.setDatabaseName("message");
 
 		SQLServerXADataSource ds = new SQLServerXADataSource();
-		ds.setUser("root");
-		ds.setPassword("123456");
-		ds.setServerName("192.168.229.133");
-		ds.setPortNumber(1433);
-		ds.setDatabaseName("message");
+		ds.setServerName(databases1Config.getUrl());
+		ds.setPortNumber(databases1Config.getPort());
+		ds.setDatabaseName(databases1Config.getDatabase());
+		ds.setUser(databases1Config.getUsername());
+		ds.setPassword(databases1Config.getPassword());
 		// XAConnection xaCon = ds.getXAConnection();
 
 		AtomikosDataSourceBean xaDataSource = new AtomikosDataSourceBean();

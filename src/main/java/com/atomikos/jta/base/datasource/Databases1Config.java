@@ -2,12 +2,14 @@ package com.atomikos.jta.base.datasource;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties(prefix = "mysql.datasource.databases1")
+@ConfigurationProperties(prefix = "sqlserver.datasource.databases1")
 public class Databases1Config {
 
 	private String url;
 	private String username;
 	private String password;
+	private int port;
+	private String database;
 
 	/** min-pool-size 最小连接数 **/
 	private int minPoolSize;
@@ -30,6 +32,22 @@ public class Databases1Config {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+	
+	public int getPort() {
+		return port;
+	}
+
+	public void setPort(int port) {
+		this.port = port;
+	}
+
+	public String getDatabase() {
+		return database;
+	}
+
+	public void setDatabase(String database) {
+		this.database = database;
 	}
 
 	public String getUsername() {
