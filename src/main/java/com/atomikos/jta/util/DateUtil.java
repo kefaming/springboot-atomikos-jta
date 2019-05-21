@@ -9,11 +9,11 @@ import java.util.Date;
 public class DateUtil {
 	public final static String FORMAT_DATETIME = "yyyy-MM-dd HH:mm:ss.SSS";
 	
-	public static void main(String[] args) {
-		Date dateValue = new Date();
-		String s = yestoday();
-		System.out.println(s);
-	}
+//	public static void main(String[] args) {
+//		Date dateValue = new Date();
+//		String s = yestoday();
+//		System.out.println(s);
+//	}
 	
 	public static final String yestoday() {
 		Calendar cal = Calendar.getInstance();

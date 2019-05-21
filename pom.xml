@@ -4,16 +4,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.atomikos.jta</groupId>
-    <artifactId>springboot-jta</artifactId>
+    <artifactId>springboot-atomikos-jta</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>springboot-jta</name>
+    <name>springboot-atomikos-jta</name>
     <description>Spring Boot project</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.6</java.version>
+        <java.version>1.7</java.version>
+        <tomcat.version>7.0.59</tomcat.version>
         <mybatis-spring-boot-starter.version>1.1.1</mybatis-spring-boot-starter.version>
     </properties>
 
@@ -35,6 +36,8 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jta-atomikos</artifactId>
         </dependency>
+        
+        
 
         <!-- mysql -->
         <dependency>
@@ -43,11 +46,28 @@
         </dependency>
         
         <!-- sqlserver -->
-		<dependency>
+		<!-- <dependency>
 		    <groupId>com.microsoft.sqlserver</groupId>
 		    <artifactId>mssql-jdbc</artifactId>
 		    <version>6.5.0.jre8-preview</version>
+		</dependency> -->
+		
+		<!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
+		<!-- <dependency>
+		    <groupId>com.microsoft.sqlserver</groupId>
+		    <artifactId>mssql-jdbc</artifactId>
+		    <version>6.4.0.jre7</version>
+		    <scope>test</scope>
+		</dependency> -->
+		
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>mssql-jdbc</artifactId>
+			<version>6.4.0.jre7</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/mssql-jdbc-6.4.0.jre7.jar</systemPath>
 		</dependency>
+		
 
         <!-- spring mvc -->
         <dependency>
@@ -100,6 +120,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                 <configuration>
+				    <includeSystemScope>true</includeSystemScope>
+                </configuration>
             </plugin>
         </plugins>
     </build>
